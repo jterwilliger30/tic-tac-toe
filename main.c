@@ -32,6 +32,7 @@ int turn(int *player, int *gameboard, int *filledSpots) {
     } else return 0; // Keep playing...
 }
 
+// General format: IF spot1 is not 0 AND spot1 == spot2 AND spot2 == spot3
 int isWinCondition(int *gameboard) {
 
     // Check rows
