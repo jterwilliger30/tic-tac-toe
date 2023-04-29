@@ -5,17 +5,13 @@
 int isWinCondition(int *gameboard);
 
 
-
-
+// Returns 1 if win condition, -1 if no win possible, and 0 if neither
 int turn(int *player, int *gameboard, int *filledSpots) {
     int move = -1;
 
     while (1) {
         printf("Pick a number 1 thru 9:\n");
-
-        // We will make the wholly unjustified assumption that the user will only input 1 character...
         scanf("%d", &move);
-
         if ((move < 1) || (move > 9)) continue;
 
         if (gameboard[move - 1] != 0) {
@@ -30,13 +26,12 @@ int turn(int *player, int *gameboard, int *filledSpots) {
     *filledSpots += 1;
 
     if ((!isWinCondition(gameboard)) && (*filledSpots == 9)) {
-        return -1;
+        return -1; // Stalemate
     } else if (isWinCondition(gameboard)) {
-        return 1;
-    } else return 0;
+        return 1; // Win condition met
+    } else return 0; // Keep playing...
 }
 
-// Returns 1 if win condition, -1 if no win possible, and 0 if neither
 int isWinCondition(int *gameboard) {
 
     // Check rows
@@ -64,6 +59,7 @@ int isWinCondition(int *gameboard) {
     return 0;
 }
 
+// Maps 0 to space, 1 to X, and 2 to O
 char numToLetter(int num) {
     if (num == 0) {
         return ' ';
