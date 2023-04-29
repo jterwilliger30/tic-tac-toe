@@ -36,14 +36,14 @@ int turn(int *player, int *gameboard, int *filledSpots) {
 int isWinCondition(int *gameboard) {
 
     // Check rows
-    for (int i = 0; i < 9; i += 3) {
+    for (int i = 0; i < 7; i += 3) {
         if (gameboard[i] && (gameboard[i] == gameboard [i + 1]) && (gameboard[i + 1] == gameboard[i + 2])) {
             return 1;
         }
     }
 
     // Check columns
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 3; i++) {
         if (gameboard[i] && (gameboard[i] == gameboard [i + 3]) && (gameboard[i + 3] == gameboard[i + 6])) {
                 return 1;
         }
