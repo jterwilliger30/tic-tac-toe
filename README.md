@@ -1,0 +1,1 @@
+Simple terminal tic-tac-toe game to get some practice with C. Compile with GCC for desired platform and you should be good to go.
