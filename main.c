@@ -11,7 +11,7 @@ int turn(int *player, int *gameboard, int *filledSpots) {
 
     while (1) {
         printf("Pick a number 1 thru 9:\n");
-        scanf("%d", &move);
+        scanf(" %d", &move);
         if ((move < 1) || (move > 9)) continue;
 
         if (gameboard[move - 1] != 0) {
