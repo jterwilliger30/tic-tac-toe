@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <ctype.h>
+#include <termios.h>
+#include <unistd.h>
 #include <stdlib.h>
 
 // Prototype
@@ -10,10 +13,20 @@ int turn(int *player, int *gameboard, int *filledSpots) {
     int move = -1;
 
     while (1) {
+        tcflush(1, TCIFLUSH); // Flushes input buffer for read call... very important!
         printf("Pick a number 1 thru 9:\n");
-        scanf(" %d", &move);
-        if ((move < 1) || (move > 9)) {
+
+        char buf[1];
+        read(1, buf, 1); // Read from STDIN
+
+        if (isdigit(buf[0])) {
+            move = buf[0] - '0';
+        } else {
             move = -1;
+            continue;
+        }
+
+        if ((move < 1) || (move > 9)) {
             continue;
         }
 
